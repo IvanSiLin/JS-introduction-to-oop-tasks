@@ -1,43 +1,55 @@
 // BEGIN
-export const make = (numer = 0, denom = 1) =>{
-    let privateNumer = numer;
-    let privateDenom = denom;
+export const make = (numerator = 0, denominator = 1) =>{
+  
+    let privateNumerator = numerator;
+    let privateDenominator = denominator;
     
     function gcd(a, b) {
+
       if (b === 0) {
+
         return a;
       }
+
       return gcd(b, a % b);
     }
     
     function reduce() {
-      const g = gcd(privateNumer, privateDenom);
-      privateNumer /= g;
-      privateDenom /= g;
+
+      const g = gcd(privateNumerator, privateDenominator);
+      privateNumerator /= g;
+      privateDenominator /= g;
     }
   
     return {
+
       setNumer(n) {
-        privateNumer = n;
+
+        privateNumerator = n;
         reduce();
       },
       setDenom(d) {
-        privateDenom = d;
+
+        privateDenominator = d;
         reduce();
       },
       getNumer() {
-        return privateNumer;
+        
+        return privateNumerator;
       },
       getDenom() {
-        return privateDenom;
+
+        return privateDenominator;
       },
       toString() {
-        return `${privateNumer}/${privateDenom}`;
+
+        return `${privateNumerator}/${privateDenominator}`;
       },
-      add(other) {
-        const newNumer = privateNumer * other.getDenom() + privateDenom * other.getNumer();
-        const newDenom = privateDenom * other.getDenom();
-        return make(newNumer, newDenom);
+      add(next) {
+
+        const newNumerator = privateNumerator * next.getDenom() + privateDenominator * next.getNumer();
+        const newDenominator = privateDenominator * next.getDenom();
+        return make(newNumerator, newDenominator);
       },
     };
   }

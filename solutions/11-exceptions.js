@@ -6,5 +6,14 @@ export class ParseError extends Error {
 }
 
 // BEGIN
+export function parseJson(jsonString){
 
+  try{
+
+    return JSON.parse(jsonString);
+  } catch(errors){
+
+    throw new ParseError("Bro, there is a mistake.")
+  }
+}
 // END
