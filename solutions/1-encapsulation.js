@@ -1,18 +1,18 @@
 // BEGIN
 export const getMutualFriends = (userOne, userTwo) =>{
 
-  const mutualFriends = [];
+  const generalFriends = [];
   const userTwoFriends = new Set(userTwo.getFriends().map(friend => friend.id));
 
   for(let friend of userOne.getFriends()){
 
     if (userTwoFriends.has(friend.id)){
 
-      mutualFriends.push(friend);
+      generalFriends.push(friend);
     }
   }
 
-  return mutualFriends;
+  return generalFriends;
 };
 // END
 
